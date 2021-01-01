@@ -7,7 +7,7 @@ end
 
 local sprite = app.site.sprite
 local oldSize = { width = sprite.width, height = sprite.height}
-local dialog = Dialog()
+local dialog = Dialog("Resize Sprite")
 
 dialog:label {
 	label = string.format("Current size: %sx%s", oldSize.width, oldSize.height)
