@@ -26,6 +26,6 @@ This resizes an image to a specified size. The actual content inside will stay t
 
 This gets every frame of a sprite and creates a new sprite with the frames stacked on top of each other. This is especially useful for creating animated Minecraft textures.
 
-## Find Midpoint Colours
+### Find Midpoint Colours
 
 Finds a customisable number of midpoints between two specified colours.
