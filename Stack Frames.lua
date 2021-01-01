@@ -1,3 +1,10 @@
+if not app.isUIAvailable then return end
+
+if app.activeSprite == nil then
+	app.alert ("Open a sprite first.")
+	return
+end
+
 local oldSprite = app.site.sprite
 
 local newSprite = Sprite( oldSprite.width, oldSprite.height * #oldSprite.frames)

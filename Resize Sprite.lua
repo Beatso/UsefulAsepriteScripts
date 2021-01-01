@@ -1,3 +1,10 @@
+if not app.isUIAvailable then return end
+
+if app.activeSprite == nil then
+	app.alert ("Open a sprite first.")
+	return
+end
+
 local sprite = app.site.sprite
 local oldSize = { width = sprite.width, height = sprite.height}
 local dialog = Dialog()

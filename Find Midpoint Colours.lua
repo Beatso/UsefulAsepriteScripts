@@ -1,3 +1,5 @@
+if not app.isUIAvailable then return end
+
 local getMidValue = function (num1, num2, index, midpoints)
 	return num1 + (index * ((num2 - num1) / (midpoints + 1)))
 end
@@ -69,10 +71,13 @@ inputDialog:button {
 					-- set foreground colour
 					app.fgColor = event.color
 				elseif event.button == MouseButton.RIGHT then
-					-- add colour to palette
-					app.command.AddColor {
-						color = event.color
-					}
+					if app.activeSprite == nil then -- check a sprite is open
+						app.alert ("Open a sprite first.")
+					else  -- add colour to palette
+						app.command.AddColor {
+							color = event.color
+						}
+					end
 				end
 			end
 		}
