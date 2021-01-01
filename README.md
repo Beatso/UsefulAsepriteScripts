@@ -1,4 +1,4 @@
-# Simple Aseprite Scripts
+# Useful Aseprite Scripts
 
 This is a small collection of scripts for [Aseprite](https://www.aseprite.org/) that I made for personal use. I find them especially useful when creating Minecraft textures.
 
