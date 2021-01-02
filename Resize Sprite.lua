@@ -35,11 +35,13 @@ dialog:button {
 		local newWidth = dialog.data.width
 		local newHeight = dialog.data.height
 
+		-- resize sprite
 		sprite.width = newWidth
 		sprite.height = newHeight
 
 		dialog:close()
 
+		-- move cels
 		for frameIndex, frame in ipairs(sprite.frames) do
 			for layerIndex, layer in ipairs(sprite.layers) do
 
