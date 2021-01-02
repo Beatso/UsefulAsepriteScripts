@@ -35,25 +35,29 @@ dialog:button {
 		local newWidth = dialog.data.width
 		local newHeight = dialog.data.height
 
-		-- resize sprite
-		sprite.width = newWidth
-		sprite.height = newHeight
+		app.transaction (
+			function ()
+				-- resize sprite
+				sprite.width = newWidth
+				sprite.height = newHeight
 
-		dialog:close()
+				dialog:close()
+				
+				-- move cels
+				for frameIndex, frame in ipairs(sprite.frames) do
+					for layerIndex, layer in ipairs(sprite.layers) do
 
-		-- move cels
-		for frameIndex, frame in ipairs(sprite.frames) do
-			for layerIndex, layer in ipairs(sprite.layers) do
+						local cel = layer:cel(frameIndex)
 
-				local cel = layer:cel(frameIndex)
+						cel.position = Point (
+							cel.position.x * (newWidth / oldSize.width),
+							cel.position.y * (newHeight / oldSize.height)
+						)
 
-				cel.position = Point (
-					cel.position.x * (newWidth / oldSize.width),
-					cel.position.y * (newHeight / oldSize.height)
-				)
-
+					end
+				end
 			end
-		end
+		)
 
 	end
 }
