@@ -1,9 +1,5 @@
 if not app.isUIAvailable then return end
 
-local getMidValue = function (num1, num2, index, midpoints)
-	return num1 + (index * ((num2 - num1) / (midpoints + 1)))
-end
-
 local inputDialog = Dialog("Select Colours")
 
 inputDialog:newrow {
@@ -39,12 +35,17 @@ inputDialog:button {
 			inputDialog.data.colourOne
 		}
 
+		
+		local getMidValue = function (num1, num2, index)
+			return num1 + (index * ((num2 - num1) / (inputDialog.data.midpoints + 1)))
+		end
+
 		for i = 1, inputDialog.data.midpoints do
 			results[i+1] = Color {
-				red = getMidValue(inputDialog.data.colourOne.red, inputDialog.data.colourTwo.red, i, inputDialog.data.midpoints),
-				green = getMidValue(inputDialog.data.colourOne.green, inputDialog.data.colourTwo.green, i, inputDialog.data.midpoints),
-				blue = getMidValue(inputDialog.data.colourOne.blue, inputDialog.data.colourTwo.blue, i, inputDialog.data.midpoints),
-				alpha = getMidValue(inputDialog.data.colourOne.alpha, inputDialog.data.colourTwo.alpha, i, inputDialog.data.midpoints)
+				red = getMidValue(inputDialog.data.colourOne.red, inputDialog.data.colourTwo.red, i),
+				green = getMidValue(inputDialog.data.colourOne.green, inputDialog.data.colourTwo.green, i),
+				blue = getMidValue(inputDialog.data.colourOne.blue, inputDialog.data.colourTwo.blue, i),
+				alpha = getMidValue(inputDialog.data.colourOne.alpha, inputDialog.data.colourTwo.alpha, i)
 			}
 		end
 
